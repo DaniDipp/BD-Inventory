@@ -1,0 +1,50 @@
+{
+	"name": "bd-inventory",
+	"version": "1.0.0",
+	"description": "",
+	"main": "dist/app.js",
+	"type": "module",
+	"scripts": {
+		"build": "concurrently -n b: npm:build-*",
+		"build-server": "tsc --project src/server",
+		"build-client": "rollup -c",
+		"start": "node .",
+		"dev": "docker compose up -d && docker logs -f bd-server",
+		"watch": "concurrently -c blue,yellow,orange -n w: npm:watch-*",
+		"watch-ts": "tsc -w -p src/server  --preserveWatchOutput",
+		"watch-js": "nodemon -w dist --delay 1",
+		"watch-sv": "rollup -c -w"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DaniDipp/BD-Inventory.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/DaniDipp/BD-Inventory/issues"
+	},
+	"homepage": "https://github.com/DaniDipp/BD-Inventory#readme",
+	"dependencies": {
+		"dotenv": "^16.0.1",
+		"express": "^4.18.1"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^22.0.1",
+		"@rollup/plugin-node-resolve": "^13.3.0",
+		"@rollup/plugin-typescript": "^8.3.3",
+		"@tsconfig/svelte": "^3.0.0",
+		"@types/express": "^4.17.13",
+		"@types/node": "^18.0.0",
+		"concurrently": "^7.2.2",
+		"nodemon": "^2.0.18",
+		"rollup": "^2.75.7",
+		"rollup-plugin-css-only": "^3.1.0",
+		"rollup-plugin-livereload": "^2.0.5",
+		"rollup-plugin-svelte": "^7.1.0",
+		"svelte": "^3.48.0",
+		"svelte-preprocess": "^4.10.7",
+		"typescript": "^4.7.4"
+	}
+}
